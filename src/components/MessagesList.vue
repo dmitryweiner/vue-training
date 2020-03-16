@@ -5,6 +5,7 @@
                 {{ item.message }}
             </li>
         </ul>
+        <span>Total messages: {{length}}</span>
     </div>
 </template>
 
@@ -14,7 +15,12 @@
         name: "MessagesList",
         props: [
             "messages"
-        ]
+        ],
+        computed: {
+            length: function () {
+                return this.$props.messages ? this.$props.messages.length : 0;
+            }
+        }
     }
 
 </script>
