@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import axios from "axios";
 
 const apiUrl = "http://localhost:3000";
 
@@ -31,34 +32,14 @@ export default {
   },
   methods: {
     receiveMessages: function () {
-      const http = new XMLHttpRequest();
-      http.open("GET", apiUrl, true);
-      http.onreadystatechange = () => {
-        if (http.readyState === 4 && http.status === 200) {
-          this.updateMessages(http.responseText);
-        }
-      };
-      http.send();
+      axios.get(apiUrl).then((response) => this.$data.messages = response.data);
     },
     sendMessage: function () {
-      const http = new XMLHttpRequest();
-      http.open("POST", apiUrl, true);
-      http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      http.onreadystatechange = () => {
-        if (http.readyState === 4 && http.status === 200) {
-          this.updateMessages(http.responseText);
-        }
-      };
-      http.send(JSON.stringify({
+      axios.post(apiUrl, {
         message: this.$data.message,
         nick: this.$data.nick
-      }));
+      }).then((response) => this.$data.messages = response.data);
       this.$data.message = "";
-    },
-
-    updateMessages: function (messagesAsText) {
-      const messages = JSON.parse(messagesAsText);
-      this.$data.messages = messages;
     }
   }
 }
