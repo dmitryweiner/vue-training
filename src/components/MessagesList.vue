@@ -2,7 +2,7 @@
     <div>
         <ul v-if="length">
             <li v-for="(item, index) in messages" :key="index">
-                {{ item.message }}
+                <strong>{{ item.nick }}:</strong> {{ item.message }}
             </li>
         </ul>
         <span>Total messages: {{length}}</span>
