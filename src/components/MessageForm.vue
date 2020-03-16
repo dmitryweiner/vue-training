@@ -15,7 +15,7 @@
         }),
         methods: {
             sendMessage: function () {
-                this.$emit("send-message", {
+                this.$store.dispatch("sendMessage", {
                     nick: this.$data.nick,
                     message: this.$data.message
                 });

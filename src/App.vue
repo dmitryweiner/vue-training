@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <MessagesList :messages="$store.state.messages"/>
-    <MessageForm v-on:send-message="sendMessage"/>
+    <MessageForm/>
   </div>
 </template>
 
