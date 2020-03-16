@@ -5,29 +5,18 @@
   </div>
 </template>
 
-<script>
-import MessagesList from "./components/MessagesList";
-import MessageForm from "./components/MessageForm";
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import MessagesList from "./components/MessagesList.vue";
+import MessageForm from "./components/MessageForm.vue";
 
-export default {
-  name: 'App',
+@Component({
   components: {
     MessageForm,
     MessagesList
   },
-  mounted: function () {
-    setInterval(this.receiveMessages, 1000);
-  },
-  methods: {
-    receiveMessages: function () {
-      this.$store.dispatch('receiveMessages');
-    },
-    sendMessage: function (data) {
-      this.$store.dispatch('sendMessage', data);
-      this.$data.message = "";
-    }
-  }
-}
+})
+export default class App extends Vue {}
 </script>
 
 <style>
