@@ -1,23 +1,21 @@
 <template>
   <div id="app">
     <MessagesList :messages="messages"/>
-    <form v-on:submit.prevent="sendMessage">
-      <input type="text" v-model="nick"/><br>
-      <textarea v-model="message"></textarea>
-      <input type="button" value="Send" v-on:click="sendMessage">
-    </form>
+    <MessageForm v-on:send-message="sendMessage"/>
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import MessagesList from "./components/MessagesList";
+import MessageForm from "./components/MessageForm";
 
 const apiUrl = "http://localhost:3000";
 
 export default {
   name: 'App',
   components: {
+    MessageForm,
     MessagesList
   },
   data: () => ({
@@ -32,11 +30,9 @@ export default {
     receiveMessages: function () {
       axios.get(apiUrl).then((response) => this.$data.messages = response.data);
     },
-    sendMessage: function () {
-      axios.post(apiUrl, {
-        message: this.$data.message,
-        nick: this.$data.nick
-      }).then((response) => this.$data.messages = response.data);
+    sendMessage: function (data) {
+      axios.post(apiUrl, JSON.stringify(data))
+              .then((response) => this.$data.messages = response.data);
       this.$data.message = "";
     }
   }
