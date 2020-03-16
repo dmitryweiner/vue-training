@@ -1,15 +1,16 @@
 <template>
     <div>
-        <ul v-if="length">
+        <ul v-if="messagesCount">
             <li v-for="(item, index) in messages" :key="index">
                 <strong>{{ item.nick }}:</strong> {{ item.message }}
             </li>
         </ul>
-        <span>Total messages: {{length}}</span>
+        <span>Total messages: {{messagesCount}}</span>
     </div>
 </template>
 
 <script>
+    import {mapGetters} from "vuex";
 
     export default {
         name: "MessagesList",
@@ -17,9 +18,7 @@
             "messages"
         ],
         computed: {
-            length: function () {
-                return this.$props.messages ? this.$props.messages.length : 0;
-            }
+            ...mapGetters(["messagesCount"])
         }
     }
 

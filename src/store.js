@@ -9,6 +9,11 @@ export default new Vuex.Store({
     state: {
         messages: []
     },
+    getters: {
+        messagesCount: function (state) {
+            return state.messages ? state.messages.length : 0;
+        }
+    },
     mutations: {
         setMessages: function(state, messages) {
             state.messages = messages;
