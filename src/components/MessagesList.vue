@@ -9,17 +9,20 @@
     </div>
 </template>
 
-<script>
-    import {mapGetters} from "vuex";
+<script lang="ts">
+    import { mapGetters } from 'vuex';
+    import { Vue, Component, Prop } from 'vue-property-decorator';
+    import { IMessagesList } from '@/interfaces/messages.ts';
 
-    export default {
-        name: "MessagesList",
-        props: [
-            "messages"
-        ],
+    @Component({
         computed: {
-            ...mapGetters(["messagesCount"])
+            ...mapGetters([
+                'messagesCount'
+            ])
         }
+    })
+    export default class MessagesList extends Vue {
+        @Prop() messages: IMessagesList = [];
     }
 
 </script>
