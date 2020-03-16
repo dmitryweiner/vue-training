@@ -1,16 +1,13 @@
 <template>
   <div id="app">
-    <MessagesList :messages="messages"/>
+    <MessagesList :messages="$store.state.messages"/>
     <MessageForm v-on:send-message="sendMessage"/>
   </div>
 </template>
 
 <script>
-import axios from "axios";
 import MessagesList from "./components/MessagesList";
 import MessageForm from "./components/MessageForm";
-
-const apiUrl = "http://localhost:3000";
 
 export default {
   name: 'App',
@@ -18,21 +15,15 @@ export default {
     MessageForm,
     MessagesList
   },
-  data: () => ({
-    messages: [],
-    message: "",
-    nick: ""
-  }),
   mounted: function () {
     setInterval(this.receiveMessages, 1000);
   },
   methods: {
     receiveMessages: function () {
-      axios.get(apiUrl).then((response) => this.$data.messages = response.data);
+      this.$store.dispatch('receiveMessages');
     },
     sendMessage: function (data) {
-      axios.post(apiUrl, JSON.stringify(data))
-              .then((response) => this.$data.messages = response.data);
+      this.$store.dispatch('sendMessage', data);
       this.$data.message = "";
     }
   }
