@@ -1,0 +1,11 @@
+{
+  "parserOptions": {
+    "parser": "babel-eslint",
+    "ecmaFeatures": {
+      "legacyDecorators": true,
+      "jsx": true,
+      "modules": true
+    }
+  },
+  "extends": ["plugin:vue/base"]
+}
