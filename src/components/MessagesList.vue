@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ul>
+        <ul v-if="length">
             <li v-for="(item, index) in messages" :key="index">
                 {{ item.message }}
             </li>
