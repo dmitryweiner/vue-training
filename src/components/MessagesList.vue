@@ -1,9 +1,7 @@
 <template>
     <div>
         <ul v-if="messagesCount">
-            <li v-for="(item, index) in messages" :key="index">
-                <strong>{{ item.nick }}:</strong> {{ item.message }}
-            </li>
+            <Message v-for="(item, index) in messages" :message="item" :key="index" />
         </ul>
         <span>Total messages: {{messagesCount}}</span>
     </div>
@@ -13,16 +11,18 @@
     import { mapGetters } from 'vuex';
     import { Vue, Component, Prop } from 'vue-property-decorator';
     import { IMessagesList } from '@/interfaces/messages.ts';
+    import Message from '@/components/Message.vue';
 
     @Component({
         computed: {
             ...mapGetters([
                 'messagesCount'
             ])
-        }
+        },
+        components: { Message }
     })
     export default class MessagesList extends Vue {
-        @Prop() messages: IMessagesList = [];
+        @Prop() messages: IMessagesList;
     }
 
 </script>

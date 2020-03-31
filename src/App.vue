@@ -16,7 +16,11 @@ import MessageForm from "./components/MessageForm.vue";
     MessagesList
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  mounted() {
+    setInterval(() => this.$store.dispatch("receiveMessages"), 1000);
+  }
+}
 </script>
 
 <style>
