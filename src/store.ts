@@ -5,7 +5,8 @@ import axios from "axios";
 const apiUrl = "http://localhost:3000"; // TODO: move it to env
 
 Vue.use(Vuex);
-export default new Vuex.Store({
+
+export const storeConfig = {
     state: {
         messages: []
     },
@@ -37,4 +38,6 @@ export default new Vuex.Store({
             });
         },
     }
-})
+};
+
+export default new Vuex.Store(storeConfig);
