@@ -1,4 +1,5 @@
-import { mount } from "@vue/test-utils"
+import Vuex from "vuex"
+import { mount, createLocalVue } from "@vue/test-utils"
 import MessagesList from "@/components/MessagesList.vue"
 
 const messages = [
@@ -6,10 +7,20 @@ const messages = [
   {message: "Hi", nick: "SuperHacker"},
 ];
 
+const localVue = createLocalVue();
+localVue.use(Vuex);
+
+const store = new Vuex.Store({
+  state: {
+    messages
+  }
+});
+
 describe("MessageList.vue", () => {
   it("renders messages array", () => {
     const wrapper = mount(MessagesList, {
-      propsData: { messages }
+      store,
+      localVue
     });
 
     const renderedMessages = wrapper.findAll("li");

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <MessagesList :messages="$store.state.messages"/>
+    <MessagesList/>
     <MessageForm/>
   </div>
 </template>

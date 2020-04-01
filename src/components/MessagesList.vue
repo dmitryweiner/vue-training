@@ -1,9 +1,9 @@
 <template>
     <div>
-        <ul v-if="messages.length">
-            <Message v-for="(item, index) in messages" :message="item" :key="index" />
+        <ul v-if="$store.state.messages.length">
+            <Message v-for="(item, index) in $store.state.messages" :message="item" :key="index" />
         </ul>
-        <span>Total messages: {{messages.length}}</span>
+        <span>Total messages: {{$store.state.messages.length}}</span>
     </div>
 </template>
 
@@ -16,7 +16,6 @@
         components: { Message }
     })
     export default class MessagesList extends Vue {
-        @Prop() messages: IMessagesList;
     }
 
 </script>
