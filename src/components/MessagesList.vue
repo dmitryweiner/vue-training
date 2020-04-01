@@ -1,9 +1,9 @@
 <template>
     <div>
-        <ul v-if="$store.state.messages.length">
+        <ul v-if="messagesCount">
             <Message v-for="(item, index) in $store.state.messages" :message="item" :key="index" />
         </ul>
-        <span>Total messages: {{$store.state.messages.length}}</span>
+        <span>Total messages: {{messagesCount}}</span>
     </div>
 </template>
 
@@ -11,9 +11,11 @@
     import { Vue, Component, Prop } from 'vue-property-decorator';
     import { IMessagesList } from '@/interfaces/messages.ts';
     import Message from '@/components/Message.vue';
+    import {mapGetters} from 'vuex';
 
     @Component({
-        components: { Message }
+        components: { Message },
+        computed: mapGetters(['messagesCount'])
     })
     export default class MessagesList extends Vue {
     }

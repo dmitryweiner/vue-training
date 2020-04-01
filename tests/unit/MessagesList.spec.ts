@@ -13,6 +13,9 @@ localVue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     messages
+  },
+  getters: {
+    messagesCount: (state) => state.messages.length
   }
 });
 
