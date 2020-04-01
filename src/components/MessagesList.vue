@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="messages-list">
         <ul v-if="messagesCount">
             <Message v-for="(item, index) in $store.state.messages" :message="item" :key="index" />
         </ul>
