@@ -15,14 +15,10 @@
             nick = "";
 
             sendMessage() {
-                this.$emit('sendMessage', {
+                this.$store.dispatch("sendMessage", {
                     nick: this.$data.nick,
                     message: this.$data.message
                 });
-                /*this.$store.dispatch("sendMessage", {
-                    nick: this.$data.nick,
-                    message: this.$data.message
-                });*/
                 this.$data.message = "";
             }
     }
