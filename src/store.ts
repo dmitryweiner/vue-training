@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from "axios";
 
-const apiUrl = `http://${window.location.hostname}:3000`; // TODO: move it to env
+const apiUrl = `//${window.location.hostname}:3000`; // TODO: move it to env
 
 Vue.use(Vuex);
 
