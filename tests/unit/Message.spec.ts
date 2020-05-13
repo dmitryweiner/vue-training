@@ -8,5 +8,6 @@ describe("Message.vue", () => {
       propsData: { message }
     });
     expect(wrapper.text()).toMatch(`${message.nick}: ${message.message}`);
+    expect(wrapper.element).toMatchSnapshot();
   })
 });

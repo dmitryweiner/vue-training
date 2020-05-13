@@ -32,6 +32,7 @@
     "chromedriver": "^80.0.1",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.1.2",
+    "jest-serializer-vue": "^2.0.2",
     "nightwatch": "^1.3.4",
     "selenium-server": "^3.141.59",
     "typescript": "~3.7.5",
